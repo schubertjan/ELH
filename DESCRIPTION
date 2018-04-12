@@ -8,3 +8,6 @@ Description: This package contains data from ELH (Extraliga Ledniho Hokeje).
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
+Imports:
+    rvest
+RoxygenNote: 6.0.1.9000
