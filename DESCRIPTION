@@ -1,0 +1,11 @@
+Package: ELH
+Type: Package
+Title: ELH Data
+Version: 0.1.0
+Author: Jan Schubert
+Maintainer: person("Jan", "Schubert", email = "honza.schubert at gmail.com", role = c("aut", "cre"))
+Description: This package contains data from ELH (Extraliga Ledniho Hokeje).
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.3.3)
