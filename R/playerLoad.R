@@ -7,7 +7,7 @@
 #' @export
 #' @examples
 #' pageUrl <- "http://hokej.cz/tipsport-extraliga/stats-center/player-analytic?season=2017&competition=6026&yearFrom=&stranger=0&state=&stats-section=shots&stats-all=1"
-#' shots <- playerLoad(pageUrl)
+#' playerLoad(pageUrl)
 
 
 playerLoad <- function(pageUrl,removeRow=TRUE) {
@@ -21,8 +21,19 @@ playerLoad <- function(pageUrl,removeRow=TRUE) {
         x[,-c(1:6)] <- apply(x[,-c(1:6)],2,as.numeric)
         x$GP <- as.numeric(x$GP)
     } else (x)
+
+    #clean variable names
+    colnames(x) <- iconv(colnames(x), to='ASCII//TRANSLIT')
+    colnames(x) <- gsub("%","pr",colnames(x))
+    colnames(x) <- gsub("[/]","per",colnames(x))
+    colnames(x) <- gsub("[.]","_",colnames(x))
+    x <- x[,-1]
+    rownames(x) <- x[,1]
+    x <- x[,-1]
+    #add variables
     x$TOI <- lubridate::ms(x$TOI)
     x$minutes <- lubridate::minute(x$TOI)+(lubridate::second(x$TOI)/60)
     x$downloadData <- rep(Sys.Date(),nrow(x))
+    x$seasonStart <- getSeason(pageUrl)
     x
 }

@@ -9,5 +9,8 @@ License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 Imports:
-    rvest
+    rvest,
+    urltools,
+    lubridate,
+    dplyr
 RoxygenNote: 6.0.1.9000
