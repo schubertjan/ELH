@@ -25,6 +25,7 @@ teamLoad <- function(pageUrl,removeRow=TRUE,node=c(".table-stats",".table-soupis
     colnames(x) <- gsub("[/]","per",colnames(x))
     colnames(x) <- gsub("[#]","Rank",colnames(x))
     colnames(x) <- gsub("[.]","_",colnames(x))
+    colnames(x) <- gsub(" ","_",colnames(x))
     x <- x[,-1]
     colnames(x)[1] <- "Team"
     #add variables
